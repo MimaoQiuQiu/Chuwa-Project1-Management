@@ -86,6 +86,7 @@ exports.signup = async function (req, res, next) {
       token,
     });
   } catch (err) {
+    // 11000: duplicate key error in mongodb
     if (err.code === 11000) {
       err.message = "Email is taken";
     }
