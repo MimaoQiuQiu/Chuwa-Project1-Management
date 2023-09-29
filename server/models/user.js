@@ -60,7 +60,7 @@ const userSchema = new mongoose.Schema({
     },
 
     // product(or stock) that the user has
-    product: [
+    products: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Product",

@@ -24,7 +24,7 @@ exports.singin = async function (req, res, next) {
       const cart = [];
       for (const [key, value] of user.cart) {
         const product = await db.Product.findById(key).populate("createBy");
-        const { id, name, description, rice, imgUrl, stockNum, createBy } =
+        const { id, name, description, price, imgUrl, stockNum, createBy } =
           product;
         cart.push({
           id: id,
