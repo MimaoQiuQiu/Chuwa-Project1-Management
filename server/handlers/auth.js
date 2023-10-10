@@ -3,7 +3,7 @@ const db = require("../models");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-exports.singin = async function (req, res, next) {
+const signin = async function (req, res, next) {
   try {
     const user = await db.User.findOne({
       email: req.body.email,
@@ -65,7 +65,7 @@ exports.singin = async function (req, res, next) {
   }
 };
 
-exports.signup = async function (req, res, next) {
+const signup = async function (req, res, next) {
   try {
     const user = await db.User.create(req.body);
     const { id, username, category, imgUrl } = user;
@@ -97,7 +97,7 @@ exports.signup = async function (req, res, next) {
   }
 };
 
-exports.resetPassword = async function (req, res, next) {
+const resetPassword = async function (req, res, next) {
   try {
     const user = await db.User.findOne({
       email: req.body.email,
@@ -119,4 +119,10 @@ exports.resetPassword = async function (req, res, next) {
       message: "Invalid Email",
     });
   }
+};
+
+module.exports = {
+  signin,
+  signup,
+  resetPassword,
 };
