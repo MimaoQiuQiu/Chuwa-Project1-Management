@@ -93,6 +93,75 @@ export const editProductAction = createAsyncThunk(
 const productSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {},
+  reducers: {
+    loadProducts: (state, action) => {
+      state.status = "loading";
+      state.products = action.payload;
+    },
+  },
+  extraReducers: (builder) => {
+    // getAllProductsAction
+    builder.addCase(getAllProductsAction.pending, (state, action) => {
+      state.status = "loading";
+    });
+    builder.addCase(getAllProductsAction.fulfilled, (state, action) => {
+      state.status = "succeeded";
+      state.products = action.payload;
+    });
+    builder.addCase(getAllProductsAction.rejected, (state, action) => {
+      state.status = "failed";
+    });
+    // getAProductAction
+    builder.addCase(getAProductAction.pending, (state, action) => {
+      state.status = "loading";
+    });
+    builder.addCase(getAProductAction.fulfilled, (state, action) => {
+      state.status = "succeeded";
+      state.oneProduct = action.payload;
+    });
+    builder.addCase(getAProductAction.rejected, (state, action) => {
+      state.status = "failed";
+    });
+    // createProductAction
+    builder.addCase(createProductAction.pending, (state, action) => {
+      state.status = "loading";
+    });
+    builder.addCase(createProductAction.fulfilled, (state, action) => {
+      state.status = "succeeded";
+      state.products.push(action.payload);
+    });
+    builder.addCase(createProductAction.rejected, (state, action) => {
+      state.status = "failed";
+    });
+    // deleteProductAction
+    builder.addCase(deleteProductAction.pending, (state, action) => {
+      state.status = "loading";
+    });
+    builder.addCase(deleteProductAction.fulfilled, (state, action) => {
+      state.status = "succeeded";
+      state.products = state.products.filter(
+        (product) => product._id !== action.payload._id
+      );
+    });
+    builder.addCase(deleteProductAction.rejected, (state, action) => {
+      state.status = "failed";
+    });
+    // editProductAction
+    builder.addCase(editProductAction.pending, (state, action) => {
+      state.status = "loading";
+    });
+    builder.addCase(editProductAction.fulfilled, (state, action) => {
+      state.status = "succeeded";
+      const index = state.products.findIndex(
+        (product) => product._id === action.payload._id
+      );
+      state.products[index] = action.payload;
+    });
+    builder.addCase(editProductAction.rejected, (state, action) => {
+      state.status = "failed";
+    });
+  },
 });
+
+export const { loadProducts } = productSlice.actions;
+export default productSlice.reducer;
