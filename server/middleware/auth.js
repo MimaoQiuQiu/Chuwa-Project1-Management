@@ -40,6 +40,17 @@ exports.isUser = async function (req, res, next) {
 // verify the vendor identity
 exports.isVendor = async function (req, res, next) {
   try {
+    // check header authorization format
+    if (
+      !req.headers.authorization ||
+      !req.headers.authorization.startsWith("Bearer ")
+    ) {
+      return next({
+        status: 401,
+        message: "No token provided or token format is incorrect.",
+      });
+    }
+
     const token = req.headers.authorization.split(" ")[1];
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
     if (decoded && decoded.category === "VENDOR") {
