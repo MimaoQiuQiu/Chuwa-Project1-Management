@@ -117,7 +117,7 @@ const editProduct = async (req, res, next) => {
  */
 const deleteProduct = async (req, res, next) => {
   try {
-    const deleteProduct = await db.Product.findById(req.params?.productId);
+    const deleteProduct = await db.Product.findById(req.params.productId);
     if (!deleteProduct) {
       return res.status(401).json({
         error: "Product not found",

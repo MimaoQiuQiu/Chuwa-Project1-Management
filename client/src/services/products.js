@@ -20,8 +20,6 @@ export const createProduct = async ({ id, product }) => {
   });
 };
 
-// wrong path maybe
-// should use /api/products
 export const getAllProducts = async ({ id }) => {
   return await makeApiCall({
     url: `/api/users/${id}/products`,

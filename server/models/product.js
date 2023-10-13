@@ -26,7 +26,7 @@ const productSchema = new mongoose.Schema({
   },
   imgUrl: {
     type: String,
-    default: "https://unsplash.com/photos/kmYw-PkX5M4",
+    default: "https://source.unsplash.com/kmYw-PkX5M4",
   },
   createBy: {
     type: mongoose.Schema.Types.ObjectId,
@@ -45,7 +45,7 @@ productSchema.pre("deleteOne", { document: true }, async function (next) {
     const vendor = await User.findById(this.createBy);
 
     // remove product from vendor's product list
-    vendor.product.remove(this.id);
+    vendor.products.remove(this.id);
     await vendor.save();
     return next();
   } catch (err) {

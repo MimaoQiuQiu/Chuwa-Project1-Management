@@ -18,12 +18,12 @@ export const getAllProductsInCart = async (userId) => {
 export const editProductQuantityInCart = async ({
   userId,
   productId,
-  newQuantity,
+  curQuantity,
 }) => {
   const res = await makeApiCall({
     url: `/api/users/${userId}/cart/${productId}`,
     method: "PUT",
-    data: { quantity: newQuantity },
+    data: { quantity: curQuantity },
   });
   return res;
 };

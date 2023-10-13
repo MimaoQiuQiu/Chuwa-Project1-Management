@@ -65,11 +65,14 @@ export const createProductAction = createAsyncThunk(
 export const deleteProductAction = createAsyncThunk(
   "products/deleteProduct",
   async (data, thunkAPI) => {
+    console.log("Attempting to delete product with data:", data);
     try {
       const product = await deleteProduct(data);
+      console.log("Product deletion result:", product);
       thunkAPI.dispatch(removeError());
       return product;
     } catch (err) {
+      console.error("Error while deleting product:", err.message);
       thunkAPI.dispatch(addError(err.message));
       return thunkAPI.rejectWithValue(err.message);
     }

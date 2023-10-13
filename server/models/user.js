@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
   // User Image
   imgUrl: {
     type: String,
-    default: "https://unsplash.com/photos/kmYw-PkX5M4",
+    default: "https://source.unsplash.com/kmYw-PkX5M4",
   },
 
   // VENDOR or USER
@@ -58,15 +58,14 @@ const userSchema = new mongoose.Schema({
         return true;
       },
     },
-
-    // product(or stock) that the user has
-    products: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Product",
-      },
-    ],
   },
+  // product(or stock) that the user has
+  products: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product",
+    },
+  ],
 });
 
 // ecrypt password before saving
