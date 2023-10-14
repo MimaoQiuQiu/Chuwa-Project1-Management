@@ -9,7 +9,7 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 const { Header, Content, Footer } = Layout;
 
 export default function MainLayout() {
-  const isMobile = useMediaQuery("(max-width: 392px)");
+  const isMobile = useMediaQuery("(max-width: 425px)");
 
   const headerStyle = useMemo(
     () => ({

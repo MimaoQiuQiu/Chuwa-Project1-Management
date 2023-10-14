@@ -3,7 +3,7 @@ import styles from "./style.module.css";
 import {
   Button,
   Card,
-  Image,
+  // Image,
   message,
   Typography,
   Select,
@@ -24,7 +24,8 @@ import { getAllProductsInCartAction } from "../../app/userSlice";
 import AddToCartButton from "../../components/Product/AddToCart";
 
 function Products() {
-  const isMobile = useMediaQuery("(max-width: 392px)");
+  const isMobile = useMediaQuery("(max-width: 425px)");
+  const isTablet = useMediaQuery("(max-width: 768px) and (min-width: 426px)");
 
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
@@ -41,6 +42,9 @@ function Products() {
   if (isMobile) {
     itemsPerPage = 3;
     rowItemNumber = 1;
+  } else if (isTablet) {
+    itemsPerPage = 9;
+    rowItemNumber = 3;
   }
 
   useEffect(() => {
@@ -108,12 +112,8 @@ function Products() {
                     className={styles.itemCard}
                     cover={
                       <div className={styles.image}>
-                        <Image
-                          style={{
-                            width: "220px",
-                            height: "200px",
-                            padding: "6px",
-                          }} // Adjusted inline styles
+                        <img
+                          className={styles.product_image}
                           src={product.imgUrl}
                           alt={product.name}
                           onClick={imageHandleClick(product)} // Corrected onClick syntax

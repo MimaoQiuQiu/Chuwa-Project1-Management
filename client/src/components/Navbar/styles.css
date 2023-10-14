@@ -56,7 +56,7 @@
 }
 
 /* small screen responsive design */
-@media screen and (max-width: 392px) {
+@media screen and (max-width: 425px) {
   .navbar {
     flex-direction: column;
     justify-content: center;

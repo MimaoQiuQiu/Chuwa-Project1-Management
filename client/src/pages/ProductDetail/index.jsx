@@ -11,7 +11,7 @@ import AddToCartButton from "../../components/Product/AddToCart";
 import styles from "./style.module.css";
 
 function ProductDetail() {
-  const isMobile = useMediaQuery("(max-width: 392px)");
+  const isMobile = useMediaQuery("(max-width: 425px)");
 
   const dispatch = useDispatch();
   const location = useLocation();
