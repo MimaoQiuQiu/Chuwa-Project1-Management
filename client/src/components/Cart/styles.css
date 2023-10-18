@@ -128,7 +128,7 @@
   margin: 20px 0px;
 }
 
-@media screen and (max-width: 392px) {
+@media screen and (max-width: 425px) {
   .ant-popover-inner {
     display: flex;
     flex-direction: column;

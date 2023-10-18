@@ -1,6 +1,7 @@
 import "./styles.css";
 
 import React, { useState, useEffect } from "react";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 import { Input, Typography, Button, Popover, Space, message } from "antd";
@@ -12,14 +13,19 @@ import { getAllProductsInCartAction, logOut } from "../../app/userSlice";
 
 const { Search } = Input;
 const { Title, Text } = Typography;
-const title = "Management";
-const companyName = "Chuwa";
+let title = "Management";
+let companyName = "Chuwa";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const { pathname: location } = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const isSmallScreen = useMediaQuery(
+    "(min-width: 426px) and (max-width: 768px)"
+  );
+
   const { isAuthenticated, user, cart, totalPrice } = useSelector(
     (state) => state.user
   );
@@ -56,10 +62,20 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="title">
-        <Title level={3} style={{ margin: 0, color: "#FFF" }}>
-          {title}
+        <Title
+          level={3}
+          style={{
+            margin: 0,
+            color: "#FFF",
+            marginRight: "0.3rem",
+          }}
+        >
+          {/* {title} */}
+          {isSmallScreen ? "M" : title}
         </Title>
-        <Text style={{ margin: 0, color: "#FFF" }}>{companyName}</Text>
+        <Text style={{ margin: 0, color: "#FFF", fontSize: "10px" }}>
+          {companyName}
+        </Text>
       </div>
       <Search
         className="searchBox"

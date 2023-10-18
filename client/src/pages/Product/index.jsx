@@ -3,7 +3,7 @@ import styles from "./style.module.css";
 import {
   Button,
   Card,
-  // Image,
+  Image,
   message,
   Typography,
   Select,
@@ -34,6 +34,8 @@ function Products() {
   const [sortOrder, setSortOrder] = useState("lowHigh");
   const navigate = useNavigate();
   const location = useLocation();
+
+  //handle pagination
   const [currentPage, setCurrentPage] = useState(1);
 
   let itemsPerPage = 8;
@@ -47,6 +49,7 @@ function Products() {
     rowItemNumber = 3;
   }
 
+  // fetching the data from the server
   useEffect(() => {
     dispatch(getAllProductsAction(user));
     dispatch(getAllProductsInCartAction(user));
@@ -66,6 +69,7 @@ function Products() {
     return sortedItems;
   };
 
+  // layout for products of current page
   const renderItemsForCurrentPage = ({ itemsPerPage, rowItemNumber }) => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -161,6 +165,7 @@ function Products() {
   };
 
   // navigate to next page
+  // update the current page, and fetch the data for the new current page
   const handlePaginationChange = (page) => {
     setCurrentPage(page);
     dispatch(getAllProductsInCartAction(user));
