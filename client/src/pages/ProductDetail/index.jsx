@@ -112,7 +112,12 @@ function ProductDetail() {
                     src={oneProduct.imgUrl}
                     alt={oneProduct.name}
                     // style={{ width: '662px', height: '597px' }}
-                    style={{ width: '100%', padding: '12px 25px' }}
+                    style={{
+                      maxWidth: '40rem',
+                      // padding: '12px 25px',
+                      maxHeight: '30rem',
+                      width: '100%',
+                    }}
                   />
                 ) : (
                   <p>No image available</p>
@@ -137,13 +142,18 @@ function ProductDetail() {
                 </h1>
                 <p style={pDesStyle}>{oneProduct.description}</p>
               </div>
-              <div className={styles.buttons}>
-                <AddToCartButton product={oneProduct} user={user} />
+              <div style={{ display: 'flex', justifyContent: 'left' }}>
+                <AddToCartButton
+                  product={oneProduct}
+                  user={user}
+                  style={{ marginRight: '10px' }}
+                />
                 {user.category === 'VENDOR' && (
                   <Button
                     // className={styles.edit_btn}
                     className="edit"
                     type="primary"
+                    style={{ marginLeft: '10px' }}
                     onClick={editButtonClick(oneProduct)}
                   >
                     Edit
