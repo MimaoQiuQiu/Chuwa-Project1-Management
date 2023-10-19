@@ -21,7 +21,9 @@ const store = configureStore({
     products: productReducer,
     error: errorReducer,
   },
+  // use the default middlewares provided by RTK for the middlewares of this store
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+
   devTools: true,
 });
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, message, InputNumber } from "antd";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
+import styles from "./addToCart.css";
 import {
   addProductToCartAction,
   getAllProductsInCartAction,
@@ -90,6 +91,7 @@ export default function AddToCartButton({ product, user }) {
   ) : (
     <Button
       // style={{ width: "110px", height: "26px" }}
+      className="addToCart"
       type="primary"
       onClick={() => {
         addProductToCart();

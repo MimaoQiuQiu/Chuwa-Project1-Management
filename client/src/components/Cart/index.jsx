@@ -12,9 +12,7 @@ const { Title, Paragraph } = Typography;
 
 export default function Cart() {
   const dispatch = useDispatch();
-  const { user, cart, totalPrice, checkoutMessage } = useSelector(
-    (state) => state.user
-  );
+  const { user, cart, totalPrice } = useSelector((state) => state.user);
   const { message: error } = useSelector((state) => state.error);
 
   // local state

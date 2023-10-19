@@ -86,7 +86,9 @@
 .button {
   border-radius: 4px;
   border: 1px solid #fff;
-  background: #5048e5;
+  background: white;
+  color: black;
+  width: 50%;
 }
 
 @media screen and (max-width: 425px) {

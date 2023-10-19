@@ -25,6 +25,7 @@ export const getAllProductsAction = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const products = await getAllProducts(data);
+      // clear any existing error in the store since the async request succeeded. Ensures that if there was a previous error in fetching products, it gets cleared once the request succeeds
       thunkAPI.dispatch(removeError());
       return products;
     } catch (err) {

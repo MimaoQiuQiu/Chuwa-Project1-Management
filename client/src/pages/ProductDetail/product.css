@@ -1,0 +1,72 @@
+/* Existing styles */
+
+/* styles.css */
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 100px;
+}
+
+.inner img {
+  max-width: 100%; /* Ensure the image doesn't exceed its container */
+  height: auto; /* Maintain aspect ratio of the image */
+  border-radius: 8px; /* Add a rounded border to the image */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow to the image */
+}
+
+p {
+  margin: 10px 0; /* Add some space around paragraphs */
+}
+
+.addToCart,
+.edit {
+  width: 100px;
+  padding: 8px 16px;
+  /* margin-right: 10px; */
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block; /* Ensure buttons are treated as inline blocks */
+  text-align: center; /* Center the text within the button */
+  box-sizing: border-box; /* Include padding and border in the total width/height */
+}
+
+.addToCart {
+  background-color: #5048e5;
+  color: white;
+  border: none;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.edit {
+  background-color: white;
+  color: black;
+  border: 1px solid #cccccc;
+}
+
+.addToCart:hover,
+.edit:hover {
+  background-color: #2980b9;
+}
+
+/* Add more styles as needed */
+
+.productImg_container {
+  width: 100%;
+  padding: 12px;
+}
+
+.productDesFirst {
+  font-size: small;
+  color: #6b7280;
+}
