@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Input, Typography } from 'antd';
+import { Radio, Button, Form, Input, Typography } from 'antd';
 import { LockOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -18,7 +18,7 @@ export default function AuthForm({
   return (
     <div className={styles.box}>
       <Typography className={styles.title}>{title}</Typography>
-      
+
       <Form onFinish={onSubmit} autoComplete="off">
         {fields.map(field => (
           <Form.Item key={field.name} name={field.name} rules={field.rules}>
@@ -37,9 +37,28 @@ export default function AuthForm({
             )}
           </Form.Item>
         ))}
+        {title === "Sign in to your account" ?
+          null
+          :
+          <Form.Item name="Category" rules={[
+            {
+              required: true,
+              message: 'Must have a Category!',
+            },
+          ]}
+          >
+            <Radio.Group>
+              <Radio value={"VENDOR"}>Vendor</Radio>
+              <Radio value={"USER"}>User</Radio>
+              <Radio value={"ADMIN"}>ADMIN</Radio>
+            </Radio.Group>
+          </Form.Item>
+        }
+
+
         {errors ? (
-        <Typography className={styles.error}>{errors}</Typography>
-      ) : null}
+          <Typography className={styles.error}>{errors}</Typography>
+        ) : null}
         <Form.Item>
           <Button
             type="primary"

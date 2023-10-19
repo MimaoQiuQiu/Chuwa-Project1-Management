@@ -2,12 +2,15 @@ import React from 'react';
 import { MailOutlined, UserOutlined, LinkOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+
 import AuthForm from "../../components/AuthForm";
 import { signUpAction } from "../../app/userSlice";
 import { removeError } from "../../app/errorSlice";
 export default function SignUp() {
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
   const { message: error } = useSelector((state) => state.error);
 
   const fields = [
@@ -44,10 +47,16 @@ export default function SignUp() {
       Email: username,
       Email: email,
       Password: password,
+      Category: category
     } = data;
-    console.log(email);
-    const category = "USER";
+    console.log({
+      Email: username,
+      Email: email,
+      Password: password,
+      Category: category
+    });
     dispatch(signUpAction({ email, username, password, category }));
+    navigate(location.state?.from || "/");
   };
   return (
     <div>
