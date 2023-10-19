@@ -1,0 +1,25 @@
+.btn {
+    width: 100%;
+  }
+  
+  .title {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+  }
+
+  .box{
+    margin: '24px 16px';
+    min-width: 400px;
+    width: 40%;
+    padding: 24px;
+    min-Height: 280;
+    background: #fff;
+  }
+  
