@@ -12,20 +12,21 @@ export default function Signin() {
   const fields = [
     {
       placeholder: "Email",
-      name: "email",
+      name: "Email",
       type: "text",
       prefix: <MailOutlined />
     },
     {
       placeholder: "Password",
-      name: "password",
+      name: "Password",
       type: "password"
     }
   ];
 
   const onSubmit = (data) => {
-    console.log(data);
+    
     const { Email: email, Password: password } = data;
+    console.log(data);
     dispatch(signInAction({ email, password })).then(() => {
       navigate(location.state?.from || "/");
     });

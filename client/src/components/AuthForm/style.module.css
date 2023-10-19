@@ -15,3 +15,7 @@
   min-Height: 280;
   background: #fff;
 }
+.error {
+  color: red;
+  font-style: italic;
+}

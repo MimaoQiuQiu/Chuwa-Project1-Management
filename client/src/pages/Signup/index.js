@@ -4,16 +4,17 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import AuthForm from "../../components/AuthForm";
 import { signUpAction } from "../../app/userSlice";
-
+import { removeError } from "../../app/errorSlice";
 export default function SignUp() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { message: error } = useSelector((state) => state.error);
 
   const fields = [
     
     {
       placeholder: "Email",
-      name: "email",
+      name: "Email",
       type: "text",
       prefix: <MailOutlined />,
       rules: [
@@ -25,7 +26,7 @@ export default function SignUp() {
     },
     {
       placeholder: "Password",
-      name: "password",
+      name: "Password",
       type: "password",
       rules: [
         {
@@ -40,11 +41,12 @@ export default function SignUp() {
     //setSubmitted(true);
     // Convert to lowercase to match database's property
     const {
+      Email: username,
       Email: email,
-      Username: username,
       Password: password,
-      Category: category,
     } = data;
+    console.log(email);
+    const category = "USER";
     dispatch(signUpAction({ email, username, password, category }));
   };
   return (
@@ -54,6 +56,7 @@ export default function SignUp() {
         onSubmit={onSubmit}
         title="Sign up an account"
         fields={fields}
+        errors={error}
       />
       
     </div>

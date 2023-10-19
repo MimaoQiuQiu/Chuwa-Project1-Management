@@ -67,8 +67,10 @@ const signin = async function (req, res, next) {
 
 const signup = async function (req, res, next) {
   try {
+    console.log(req.body);
     const user = await db.User.create(req.body);
     const { id, username, category, imgUrl } = user;
+    
     const token = await jwt.sign(
       {
         id,
@@ -88,7 +90,7 @@ const signup = async function (req, res, next) {
   } catch (err) {
     // 11000: duplicate key error in mongodb
     if (err.code === 11000) {
-      err.message = "Email is taken";
+      err.message =   "Email is taken";
     }
     return next({
       status: 400,
