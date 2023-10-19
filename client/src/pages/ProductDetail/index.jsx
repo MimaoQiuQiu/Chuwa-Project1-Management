@@ -223,14 +223,14 @@ function ProductDetail() {
   // )
 
   return (
-    <div>
+    <div style={{ minWidth: '100%', minHeight: '100%', paddingTop: '12px' }}>
       <Layout>
         <Header style={headerStyle}>
           <h1>Products Detail</h1>
         </Header>
         <Content style={contentStyle}>
-          <Row>
-            <Col sm={24} lg={16}>
+          <Row style={{ flexWrap: 'wrap' }}>
+            <Col xs={24} sm={24} md={16} lg={16} xl={16}>
               <div>
                 {oneProduct.imgUrl ? (
                   <img
@@ -245,7 +245,7 @@ function ProductDetail() {
                 )}
               </div>
             </Col>
-            <Col sm={24} lg={8}>
+            <Col xs={24} sm={24} md={8} lg={8} xl={8}>
               <div>
                 <p style={pFirstStyle}>{oneProduct.category}</p>
                 <h1 style={pNameStyle}>{oneProduct.name}</h1>
@@ -275,25 +275,17 @@ function ProductDetail() {
                     Edit
                   </Button>
                 )}
-
-                {/* <button className="addToCart" onClick={atc}>
-                  Add to Cart
-                </button>
-                <button className="edit" onClick={edit}>
-                  {' '}
-                  edit{' '}
-                </button> */}
               </div>
             </Col>
           </Row>
 
           {/* <Flex justify="space-between" wrap="wrap">
-            <div className={stylesJS.productImg} style={{}}>
-              {imageUrl ? (
+            <div>
+              {oneProduct.imgUrl ? (
                 <img
                   // src={imageUrl}
-                  src={product.imgUrl}
-                  alt={product.name}
+                  src={oneProduct.imgUrl}
+                  alt={oneProduct.name}
                   style={{ width: '662px', height: '597px' }}
                 />
               ) : (
@@ -307,10 +299,10 @@ function ProductDetail() {
               style={{ padding: 32 }}
             >
               <div>
-                <p style={styles.productDesFirst}>{product.category}</p>
-                <p>{product.name}</p>
-                <p>{product.price}</p>
-                <p>{product.description}</p>
+                <p style={styles.productDesFirst}>{oneProduct.category}</p>
+                <p>{oneProduct.name}</p>
+                <p>{oneProduct.price}</p>
+                <p>{oneProduct.description}</p>
               </div>
 
               <div className={styles.buttons}>

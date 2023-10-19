@@ -10,6 +10,7 @@ import {
   Pagination,
   Row,
   Col,
+  Layout,
 } from 'antd'
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
@@ -42,8 +43,8 @@ function Products() {
     itemsPerPage = 3
     rowItemNumber = 1
   } else if (isTablet) {
-    itemsPerPage = 9
-    rowItemNumber = 3
+    itemsPerPage = 10
+    rowItemNumber = 5
   }
 
   // fetching the data from the server
@@ -97,17 +98,20 @@ function Products() {
       }
 
       return (
-        <div>
+        <Layout style={{ backgroundColor: 'white' }}>
           {rows.map((row, rowIndex) => (
-            <Row gutter={8} key={rowIndex}>
+            <Row
+              gutter={[12, 10]}
+              style={{ maxWidth: '1323px', marginLeft: '0' }}
+            >
               {row.map((product, productIndex) => (
                 <Col
                   className={styles.col}
                   key={productIndex}
                   xs={24}
                   sm={12}
-                  md={8}
-                  lg={6}
+                  md={6}
+                  lg={5}
                 >
                   <Card
                     className={styles.itemCard}
@@ -155,7 +159,7 @@ function Products() {
               ))}
             </Row>
           ))}
-        </div>
+        </Layout>
       )
     }
     return null
@@ -196,12 +200,13 @@ function Products() {
   }
 
   return (
-    <div className={styles.productsContainer}>
+    <div style={{ minWidth: '100%', minHeight: '100%', paddingTop: '12px' }}>
       <div className={styles.topContent}>
-        <div>
-          <Typography.Title>Products</Typography.Title>
+        <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: '28px' }}>
+          {/* <Typography.Title>Products</Typography.Title> */}
+          Products
         </div>
-        <Row gutter={[16, 16]}>
+        <Row gutter={[6, 6]}>
           <div>
             <Select
               onChange={(value) => {

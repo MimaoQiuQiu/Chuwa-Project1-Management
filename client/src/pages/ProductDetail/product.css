@@ -4,14 +4,13 @@
 
 .container {
   display: flex;
-  align-items: center; /* Vertical alignment */
+  align-items: center;
 }
 
 .header {
   font-family: 'Inter';
   font-weight: 700;
   font-size: 100px;
-  /* Add any other styles you want for the outer container */
 }
 
 .inner img {
@@ -29,7 +28,7 @@ p {
 .edit {
   width: 100px;
   padding: 8px 16px;
-  margin-right: 10px;
+  /* margin-right: 10px; */
   border-radius: 4px;
   cursor: pointer;
   display: inline-block; /* Ensure buttons are treated as inline blocks */
