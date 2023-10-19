@@ -50,7 +50,6 @@ export default function AuthForm({
             <Radio.Group>
               <Radio value={"VENDOR"}>Vendor</Radio>
               <Radio value={"USER"}>User</Radio>
-              <Radio value={"ADMIN"}>ADMIN</Radio>
             </Radio.Group>
           </Form.Item>
         }
