@@ -302,6 +302,7 @@ function ProductDetail() {
                     alt={oneProduct.name}
                     // style={{ width: '662px', height: '597px' }}
                     style={{
+                      maxWidth: "40rem",
                       width: "100%",
                       maxHeight: "45rem",
                       height: "100%",
@@ -333,8 +334,14 @@ function ProductDetail() {
                 </h1>
                 <p style={pDesStyle}>{oneProduct.description}</p>
               </div>
-              <div className="buttons">
-                <AddToCartButton product={oneProduct} user={user} />
+              <div
+                style={{ display: "flex", justifyContent: "left", gap: "1rem" }}
+              >
+                <AddToCartButton
+                  product={oneProduct}
+                  user={user}
+                  style={{ marginRight: "10px" }}
+                />
                 {user.category === "VENDOR" && (
                   <Button
                     // className={styles.edit_btn}

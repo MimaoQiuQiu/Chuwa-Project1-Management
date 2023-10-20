@@ -42,12 +42,6 @@ p {
   border: none;
 }
 
-.buttons {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-}
-
 .edit {
   background-color: white;
   color: black;

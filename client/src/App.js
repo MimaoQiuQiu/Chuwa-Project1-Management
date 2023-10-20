@@ -7,6 +7,7 @@ import ProtectLayout from "./components/Layout/ProtectLayout";
 import AuthProtectLayout from "./components/Layout/AuthProtectLayout";
 import UpdatePassword from "./pages/UpdatePassword";
 import NotFound from "./pages/NotFound";
+import Forgot from "./pages/Forgot";
 
 import ProductDetail from "./pages/ProductDetail";
 import NewProduct from "./pages/CreateProduct";
@@ -22,6 +23,7 @@ function App() {
             <Route path="signup" element={<SignUp />} />
             <Route path="signin" element={<SignIn />} />
             <Route path="updatePassword" element={<UpdatePassword />} />
+            <Route path="forgot" element={<Forgot />} />
           </Route>
           <Route element={<ProtectLayout />}>
             <Route

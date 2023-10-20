@@ -23,6 +23,27 @@ const signin = async function (req, res, next) {
 
       const cart = [];
       for (const [key, value] of user.cart) {
+        // populate let you get the whole object, which is the creator(vendor), other than just the id of the creator(vendor)
+        // const product = await db.Product.findById(123).populate("createBy");
+        // not receive
+        // {
+        //   _id: 123,
+        //   name: 'Laptop',
+        //   price: 1000,
+        //   createBy: 789
+        // }
+        // instead receive
+        // {
+        //   _id: 123,
+        //   name: 'Laptop',
+        //   price: 1000,
+        //   createBy: {
+        //     _id: 789,
+        //     username: 'john_doe',
+        //     email: 'john@example.com'
+        //   }
+        // }
+
         const product = await db.Product.findById(key).populate("createBy");
         const { id, name, description, price, imgUrl, stockNum, createBy } =
           product;

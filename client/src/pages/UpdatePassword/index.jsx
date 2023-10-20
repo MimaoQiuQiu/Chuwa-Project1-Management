@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
+import { MailOutlined } from "@ant-design/icons";
 import AuthForm from "../../components/AuthForm";
 import { removeError } from "../../app/errorSlice";
 import { resetPasswordAction } from "../../app/userSlice";
@@ -24,6 +24,8 @@ export default function UpdatePassword() {
 
   const fields = [
     {
+      placeholder: "Email",
+      prefix: <MailOutlined />,
       name: "Email",
       type: "text",
       rules: [
@@ -38,6 +40,7 @@ export default function UpdatePassword() {
       ],
     },
     {
+      placeholder: "Password",
       name: "Password",
       type: "password",
       rules: [

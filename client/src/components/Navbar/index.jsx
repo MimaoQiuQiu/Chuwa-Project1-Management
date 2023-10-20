@@ -23,7 +23,7 @@ export default function Navbar() {
   const dispatch = useDispatch();
 
   const isSmallScreen = useMediaQuery(
-    "(min-width: 426px) and (max-width: 768px)"
+    "(min-width: 426px) and (max-width: 875px)"
   );
 
   const { isAuthenticated, user, cart, totalPrice } = useSelector(
