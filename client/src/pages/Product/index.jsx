@@ -127,18 +127,15 @@ function Products() {
                     }
                     actions={[
                       <div className={styles.buttons_container}>
-                        {/* <AddToCartButton product={product} user={user} /> */}
+                        <AddToCartButton product={product} user={user} />
                         {user.category === 'VENDOR' && (
-                          <>
-                            <AddToCartButton product={product} user={user} />
-                            <Button
-                              className={styles.button}
-                              type="primary"
-                              onClick={editButtonClick(product)}
-                            >
-                              Edit
-                            </Button>
-                          </>
+                          <Button
+                            className={styles.button}
+                            type="primary"
+                            onClick={editButtonClick(product)}
+                          >
+                            Edit
+                          </Button>
                         )}
                       </div>,
                     ]}
