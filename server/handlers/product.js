@@ -274,7 +274,7 @@ const getOneProductInCart = async (req, res, next) => {
         },
       });
     } else {
-      return res.status(201).json({
+      return res.status(404).json({
         error: "Product not in cart",
       });
     }
@@ -321,7 +321,7 @@ const editProductQuantityInCart = async (req, res, next) => {
       });
     } else {
       await dismissCartGuard(req.params.id, cartGuard);
-      return res.status(201).json({
+      return res.status(404).json({
         error: "Product not in cart",
       });
     }
@@ -343,7 +343,7 @@ const deleteProductInCart = async (req, res, next) => {
       });
     }
     if (!user.cart.has(req.params.productId)) {
-      return res.status(201).json({
+      return res.status(404).json({
         error: "Product not in cart",
       });
     }
@@ -406,6 +406,7 @@ const checkout = async (req, res, next) => {
     }
 
     // update stock quantity
+    const charge = +req.body.charge;
     for (const [productId, quantity] of user.cart) {
       // find the product in stock
       const product = await db.Product.findById(productId);
@@ -424,7 +425,7 @@ const checkout = async (req, res, next) => {
       await product.save();
     }
     // calculate total charge
-    const charge = +req.body.charge;
+    // const charge = +req.body.charge;
     await user.save();
     return res.status(200).json({
       message: `Total charge is ${charge}.`,

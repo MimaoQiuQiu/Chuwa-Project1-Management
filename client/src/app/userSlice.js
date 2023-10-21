@@ -280,6 +280,8 @@ const userSlice = createSlice({
       state.status = "loading";
     });
     builder.addCase(checkoutAction.fulfilled, (state, action) => {
+      state.cart = [];
+      state.totalPrice = 0;
       state.status = "succeeded";
     });
     builder.addCase(checkoutAction.rejected, (state, action) => {

@@ -75,7 +75,7 @@ export default function EditProduct() {
 
   return (
     <>
-      {status === "pending" ? (
+      {status === "loading" ? (
         <div>Loading...</div>
       ) : status === "succeeded" ? (
         <div className={styles.container}>

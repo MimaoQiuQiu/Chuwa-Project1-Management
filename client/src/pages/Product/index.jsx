@@ -290,6 +290,9 @@ import AddToCartButton from "../../components/Product/AddToCart";
 function Products() {
   const isMobile = useMediaQuery("(max-width: 425px)");
   const isTablet = useMediaQuery("(max-width: 768px) and (min-width: 426px)");
+  const isBigTablet = useMediaQuery(
+    "(max-width: 991px) and (min-width: 769px)"
+  );
 
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
@@ -301,16 +304,20 @@ function Products() {
 
   //handle pagination
   const [currentPage, setCurrentPage] = useState(1);
-
+  // total number of items to display on each page.
   let itemsPerPage = 10;
+  // number of items in each row of the grid.
   let rowItemNumber = 5;
 
   if (isMobile) {
     itemsPerPage = 3;
     rowItemNumber = 1;
   } else if (isTablet) {
-    itemsPerPage = 10;
-    rowItemNumber = 5;
+    itemsPerPage = 8;
+    rowItemNumber = 4;
+  } else if (isBigTablet) {
+    itemsPerPage = 8;
+    rowItemNumber = 4;
   }
 
   // fetching the data from the server
@@ -342,17 +349,36 @@ function Products() {
     // Check if startIndex is within the range of the sortedItems array
     if (startIndex < sortedItems.length) {
       // Slice the sortedItems array to get the items for the current page
+
+      // itemsForCurrentPage is an array of products, 8 is just a placeholder
       let itemsForCurrentPage = 8;
+
+      // checks whether the endIndex (which represents the last item's index that we want to display on the current page) is less than the total number of sortedItems
       if (endIndex < sortedItems.length) {
+        // not all items from the sortedItems array are being shown on the current page
         // more product for next page
+
+        //extract a sub-array from sortedItems. This sub-array starts at startIndex and goes up to, but does not include, endIndex.
+        //sliced array represents the items that will be displayed on the current page, and it gets assigned to itemsForCurrentPage.
         itemsForCurrentPage = sortedItems.slice(startIndex, endIndex);
       } else {
+        //endIndex is not less than the total length of sortedItems
+        // we're dealing with items for the last page.
+
+        //extracts all remaining items from startIndex till the end of the sortedItems array. This is because, for the last page, the end index could be less than a full page's worth of items.
         itemsForCurrentPage = sortedItems.slice(startIndex, sortedItems.length);
       }
 
+      // array to store the grouped items for each row
       const rows = [];
+
+      // add a sequential number to each product, 1-based
       let index = startIndex + 1;
+
+      // loop through the itemsForCurrentPage array, and group them into rows
       for (let i = 0; i < itemsForCurrentPage.length; i += rowItemNumber) {
+        // slices a sub-array of items starting at the current loop index i and ending just before i + rowItemNumber. This sub-array represents the items for the current row.
+        // iterate over each product in the current row. For each product, a new object is returned which contains all the properties of the original product (indicated by the ...product spread syntax) plus an additional index property.
         const rowItems = itemsForCurrentPage
           .slice(i, i + rowItemNumber)
           .map((product) => ({
@@ -456,7 +482,7 @@ function Products() {
     }
   };
 
-  // Add product to user's cart
+  // Add new product
   const addProductButtonClick = (e) => {
     if (user.category === "VENDOR") {
       navigate(`/new-product`);

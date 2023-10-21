@@ -17,6 +17,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users/:id", isLogin, isUser, userRoutes);
 
 // api for getting products
+// for testing, never use this api
 app.get("/api/products", isLogin, isUser, async function (req, res, next) {
   try {
     const products = await db.Product.find()

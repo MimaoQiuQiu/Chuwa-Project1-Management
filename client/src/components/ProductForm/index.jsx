@@ -292,7 +292,7 @@ export default function ProductForm({
                 type="primary"
                 htmlType="submit"
                 className={style.btn}
-                loading={status === "pending"}
+                loading={status === "loading"}
               >
                 {buttonText}
               </Button>
